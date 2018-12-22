@@ -31,4 +31,8 @@ public class Mark {
 
     @Column(name = "teacher", nullable = false)
     private Teacher teacher;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 }
