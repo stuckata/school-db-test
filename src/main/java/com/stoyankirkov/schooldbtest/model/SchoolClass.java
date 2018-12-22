@@ -25,4 +25,7 @@ public class SchoolClass {
 
     @OneToMany(mappedBy = "schoolClass")
     private List<Student> students;
+
+    @OneToMany(mappedBy = "schoolClass")
+    List<ClassSubjectTeacher> subjects;
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "subjects")
@@ -21,4 +22,7 @@ public class Subject {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "subject")
+    List<ClassSubjectTeacher> subjects;
 }

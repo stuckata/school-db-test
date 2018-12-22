@@ -6,25 +6,22 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "marks")
+@Table(name = "classes_subjects_teachers")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class Mark {
+public class ClassSubjectTeacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "value", nullable = false)
-    private int value;
-
-    @Column(name = "date", nullable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date date;
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private SchoolClass schoolClass;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
@@ -33,8 +30,4 @@ public class Mark {
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
 }
