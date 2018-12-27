@@ -18,7 +18,7 @@ public class Mark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column(name = "value", nullable = false)
     private int value;
