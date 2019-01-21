@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "teachers")
@@ -18,11 +17,11 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "teacher")
-    List<ClassSubjectTeacher> subjects;
+//    @OneToMany(mappedBy = "teacher")
+//    List<ClassSubjectTeacher> subjects;
 }

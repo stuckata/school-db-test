@@ -17,7 +17,7 @@ public class ClassSubjectTeacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "class_id", nullable = false)

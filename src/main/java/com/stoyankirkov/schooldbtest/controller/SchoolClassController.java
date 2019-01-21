@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1")
 public class SchoolClassController {
@@ -25,7 +26,7 @@ public class SchoolClassController {
     }
 
     @GetMapping("/classes/{id}")
-    public ResponseEntity<SchoolClass> getClassById(@PathVariable(value = "id") Long classId)
+    public ResponseEntity<SchoolClass> getClassById(@PathVariable(value = "id") Integer classId)
             throws ResourceNotFoundException {
         SchoolClass schoolClass = schoolClassRepository.findById(classId)
                 .orElseThrow(() -> new ResourceNotFoundException("Class not found for this id :: " + classId));
@@ -38,19 +39,19 @@ public class SchoolClassController {
     }
 
     @PutMapping("/classes/{id}")
-    public ResponseEntity<SchoolClass> updateClass(@PathVariable(value = "id") Long classId,
+    public ResponseEntity<SchoolClass> updateClass(@PathVariable(value = "id") Integer classId,
                                            @Valid @RequestBody SchoolClass updatedSchoolClass) throws ResourceNotFoundException {
         SchoolClass schoolClass = schoolClassRepository.findById(classId)
                 .orElseThrow(() -> new ResourceNotFoundException("Class not found for this id :: " + classId));
         schoolClass.setName(updatedSchoolClass.getName());
         schoolClass.setStudents(updatedSchoolClass.getStudents());
-        schoolClass.setSubjects(updatedSchoolClass.getSubjects());
+//        schoolClass.setSubjects(updatedSchoolClass.getSubjects());
         final SchoolClass savedSchoolClass = schoolClassRepository.save(schoolClass);
         return ResponseEntity.ok(savedSchoolClass);
     }
 
     @DeleteMapping("/classes/{id}")
-    public Map<String, Boolean> deleteClass(@PathVariable(value = "id") Long classId)
+    public Map<String, Boolean> deleteClass(@PathVariable(value = "id") Integer classId)
             throws ResourceNotFoundException {
         SchoolClass schoolClass = schoolClassRepository.findById(classId)
                 .orElseThrow(() -> new ResourceNotFoundException("Class not found for this id :: " + classId));

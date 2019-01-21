@@ -21,7 +21,7 @@ public class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @Test
-    public void whenFindByName_thenReturnStudent() {
+    public void whenFindById_thenReturnStudent() {
         // given
         Student alex = new Student();
         alex.setName("Alex");

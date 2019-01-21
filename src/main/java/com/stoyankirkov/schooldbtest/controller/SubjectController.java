@@ -25,7 +25,7 @@ public class SubjectController {
     }
 
     @GetMapping("/subjects/{id}")
-    public ResponseEntity<Subject> getSubjectById(@PathVariable(value = "id") Long subjectId)
+    public ResponseEntity<Subject> getSubjectById(@PathVariable(value = "id") Integer subjectId)
             throws ResourceNotFoundException {
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Subject not found for this id :: " + subjectId));
@@ -38,18 +38,18 @@ public class SubjectController {
     }
 
     @PutMapping("/subjects/{id}")
-    public ResponseEntity<Subject> updateSubject(@PathVariable(value = "id") Long subjectId,
+    public ResponseEntity<Subject> updateSubject(@PathVariable(value = "id") Integer subjectId,
                                            @Valid @RequestBody Subject updatedSubject) throws ResourceNotFoundException {
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Subject not found for this id :: " + subjectId));
         subject.setName(updatedSubject.getName());
-        subject.setSubjects(updatedSubject.getSubjects());
+//        subject.setSubjects(updatedSubject.getSubjects());
         final Subject savedSubject = subjectRepository.save(subject);
         return ResponseEntity.ok(savedSubject);
     }
 
     @DeleteMapping("/subjects/{id}")
-    public Map<String, Boolean> deleteSubject(@PathVariable(value = "id") Long subjectId)
+    public Map<String, Boolean> deleteSubject(@PathVariable(value = "id") Integer subjectId)
             throws ResourceNotFoundException {
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Subject not found for this id :: " + subjectId));

@@ -26,7 +26,7 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers/{id}")
-    public ResponseEntity<Teacher> getTeacherById(@PathVariable(value = "id") Long teacherId)
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable(value = "id") Integer teacherId)
             throws ResourceNotFoundException {
         Teacher teacher = teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher not found for this id :: " + teacherId));
@@ -39,18 +39,18 @@ public class TeacherController {
     }
 
     @PutMapping("/teachers/{id}")
-    public ResponseEntity<Teacher> updateTeacher(@PathVariable(value = "id") Long teacherId,
+    public ResponseEntity<Teacher> updateTeacher(@PathVariable(value = "id") Integer teacherId,
                                                  @Valid @RequestBody Subject updatedTeacher) throws ResourceNotFoundException {
         Teacher teacher = teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher not found for this id :: " + teacherId));
         teacher.setName(updatedTeacher.getName());
-        teacher.setSubjects(updatedTeacher.getSubjects());
+//        teacher.setSubjects(updatedTeacher.getSubjects());
         final Teacher savedTeacher = teacherRepository.save(teacher);
         return ResponseEntity.ok(savedTeacher);
     }
 
     @DeleteMapping("/teachers/{id}")
-    public Map<String, Boolean> deleteTeacher(@PathVariable(value = "id") Long teacherId)
+    public Map<String, Boolean> deleteTeacher(@PathVariable(value = "id") Integer teacherId)
             throws ResourceNotFoundException {
         Teacher teacher = teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher not found for this id :: " + teacherId));

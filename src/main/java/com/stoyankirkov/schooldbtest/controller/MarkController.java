@@ -25,7 +25,7 @@ public class MarkController {
     }
 
     @GetMapping("/marks/{id}")
-    public ResponseEntity<Mark> getMarkById(@PathVariable(value = "id") Long markId)
+    public ResponseEntity<Mark> getMarkById(@PathVariable(value = "id") Integer markId)
             throws ResourceNotFoundException {
         Mark mark = markRepository.findById(markId)
                 .orElseThrow(() -> new ResourceNotFoundException("Mark not found for this id :: " + markId));
@@ -38,7 +38,7 @@ public class MarkController {
     }
 
     @PutMapping("/marks/{id}")
-    public ResponseEntity<Mark> updateMark(@PathVariable(value = "id") Long markId,
+    public ResponseEntity<Mark> updateMark(@PathVariable(value = "id") Integer markId,
                                                    @Valid @RequestBody Mark updatedMark) throws ResourceNotFoundException {
         Mark mark = markRepository.findById(markId)
                 .orElseThrow(() -> new ResourceNotFoundException("Mark not found for this id :: " + markId));
@@ -51,7 +51,7 @@ public class MarkController {
     }
 
     @DeleteMapping("/marks/{id}")
-    public Map<String, Boolean> deleteMark(@PathVariable(value = "id") Long markId)
+    public Map<String, Boolean> deleteMark(@PathVariable(value = "id") Integer markId)
             throws ResourceNotFoundException {
         Mark mark = markRepository.findById(markId)
                 .orElseThrow(() -> new ResourceNotFoundException("Mark not found for this id :: " + markId));

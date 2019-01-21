@@ -18,7 +18,7 @@ public class SchoolClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -26,6 +26,6 @@ public class SchoolClass {
     @OneToMany(mappedBy = "schoolClass")
     private List<Student> students;
 
-    @OneToMany(mappedBy = "schoolClass")
-    List<ClassSubjectTeacher> subjects;
+//    @OneToMany(mappedBy = "schoolClass")
+//    List<ClassSubjectTeacher> subjects;
 }
