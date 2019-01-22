@@ -37,4 +37,8 @@ public class Mark {
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private SchoolClass schoolClass;
 }
