@@ -10,4 +10,5 @@ import java.util.List;
 public interface MarkRepository extends JpaRepository<Mark, Integer> {
 
     List<Mark> findMarksByStudent_IdAndAndSubject_Id(Integer studentId, Integer subjectId);
+    List<Mark> findMarksBySchoolClass_IdAndSubject_Id(Integer classId, Integer subjectId);
 }

@@ -25,21 +25,13 @@ public class MarkController {
         return markRepository.findAll();
     }
 
-    @GetMapping("/marks/{studentId}/{subjectId}")
-    public  ResponseEntity<List<Mark>> getMarksByStudentIdAndSubjectId(@PathVariable(value = "studentId") Integer studentId,
-                                                                   @PathVariable(value = "subjectId") Integer subjectId) {
+    @GetMapping("/marks/{classId}/{subjectId}")
+    public  ResponseEntity<List<Mark>> getMarksByClassIdAndSubjectId(@PathVariable(value = "classId") Integer classId,
+                                                                       @PathVariable(value = "subjectId") Integer subjectId) {
 
-        List<Mark> marks = markRepository.findMarksByStudent_IdAndAndSubject_Id(studentId, subjectId);
+        List<Mark> marks = markRepository.findMarksBySchoolClass_IdAndSubject_Id(classId, subjectId);
         return ResponseEntity.ok().body(marks);
     }
-
-//    @GetMapping("/marks/{id}")
-//    public ResponseEntity<Mark> getMarkById(@PathVariable(value = "id") Integer markId)
-//            throws ResourceNotFoundException {
-//        Mark mark = markRepository.findById(markId)
-//                .orElseThrow(() -> new ResourceNotFoundException("Mark not found for this id :: " + markId));
-//        return ResponseEntity.ok().body(mark);
-//    }
 
     @PostMapping("/marks")
     public Mark createMark(@Valid @RequestBody Mark mark) {
