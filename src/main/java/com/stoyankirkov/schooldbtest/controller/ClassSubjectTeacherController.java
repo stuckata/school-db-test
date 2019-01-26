@@ -35,7 +35,7 @@ public class ClassSubjectTeacherController {
     public ResponseEntity<List<ClassSubjectTeacher>>
     getAllClassesSubjectsTeachersBySubjectId(@PathVariable(value = "id") Integer subjectId) throws ResourceNotFoundException {
         List<ClassSubjectTeacher> classSubjectTeachers =
-                classSubjectTeacherRepository.findClassSubjectTeachersBySchoolClass_Id(subjectId)
+                classSubjectTeacherRepository.findClassSubjectTeachersBySubject_Id(subjectId)
                         .orElseThrow(() -> new ResourceNotFoundException("Classes not found for this id :: " + subjectId));
         return ResponseEntity.ok().body(classSubjectTeachers);
     }
@@ -44,7 +44,7 @@ public class ClassSubjectTeacherController {
     public ResponseEntity<List<ClassSubjectTeacher>>
     getAllClassesSubjectsTeachersByTeacherId(@PathVariable(value = "id") Integer teacherId) throws ResourceNotFoundException {
         List<ClassSubjectTeacher> classSubjectTeachers =
-                classSubjectTeacherRepository.findClassSubjectTeachersBySchoolClass_Id(teacherId)
+                classSubjectTeacherRepository.findClassSubjectTeachersByTeacher_Id(teacherId)
                         .orElseThrow(() -> new ResourceNotFoundException("Classes not found for this id :: " + teacherId));
         return ResponseEntity.ok().body(classSubjectTeachers);
     }
