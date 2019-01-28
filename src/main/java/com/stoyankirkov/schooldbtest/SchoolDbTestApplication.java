@@ -9,6 +9,5 @@ public class SchoolDbTestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolDbTestApplication.class, args);
 	}
-
 }
 
