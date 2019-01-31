@@ -22,7 +22,7 @@ public class ClassSubjectTeacherController {
         return classSubjectTeacherRepository.findAll();
     }
 
-    @GetMapping("/classes-subjects-teachers-by-class/{id}")
+    @GetMapping("/class-subject-teacher-by-class/{id}")
     public ResponseEntity<List<ClassSubjectTeacher>>
     getAllClassesSubjectsTeachersByClassId(@PathVariable(value = "id") Integer schoolClassId) throws ResourceNotFoundException {
         List<ClassSubjectTeacher> classSubjectTeachers =
@@ -31,7 +31,7 @@ public class ClassSubjectTeacherController {
         return ResponseEntity.ok().body(classSubjectTeachers);
     }
 
-    @GetMapping("/classes-subjects-teachers-by-subject/{id}")
+    @GetMapping("/class-subject-teacher-by-subject/{id}")
     public ResponseEntity<List<ClassSubjectTeacher>>
     getAllClassesSubjectsTeachersBySubjectId(@PathVariable(value = "id") Integer subjectId) throws ResourceNotFoundException {
         List<ClassSubjectTeacher> classSubjectTeachers =
@@ -40,7 +40,7 @@ public class ClassSubjectTeacherController {
         return ResponseEntity.ok().body(classSubjectTeachers);
     }
 
-    @GetMapping("/classes-subjects-teachers-by-teacher/{id}")
+    @GetMapping("/class-subject-teacher-by-teacher/{id}")
     public ResponseEntity<List<ClassSubjectTeacher>>
     getAllClassesSubjectsTeachersByTeacherId(@PathVariable(value = "id") Integer teacherId) throws ResourceNotFoundException {
         List<ClassSubjectTeacher> classSubjectTeachers =
